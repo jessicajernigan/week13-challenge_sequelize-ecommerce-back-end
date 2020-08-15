@@ -9,13 +9,7 @@ router.get('/', (req, res) => {
       'id',
       'category_name'
     ],
-    include: { // be sure to include its associated Products
-      model: Product,
-      attributes: [
-        'id',
-        'product_name'
-      ]
-    }
+    include: [Product]
   })
     .then(allCategories => res.json(allCategories))
     .catch(err => {
@@ -35,13 +29,7 @@ router.get('/:id', (req, res) => {
       'id',
       'category_name'
     ],
-    include: { // be sure to include its associated Products
-      model: Product,
-      attributes: [
-        'id',
-        'product_name'
-      ]
-    }
+    include: [Product]
   })
     .then(allCategories => res.json(allCategories))
     .catch(err => {
