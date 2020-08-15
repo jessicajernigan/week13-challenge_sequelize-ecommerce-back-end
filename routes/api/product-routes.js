@@ -5,8 +5,40 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 router.get('/', (req, res) => {
-  // find all products
-  // be sure to include its associated Category and Tag data
+  Product.findAll({
+    attributes: [
+      'id',
+      'product_name',
+      'price',
+      'stock',
+      'category_id',
+      [sequelize.literal(`
+      SELECT 
+        tag_name
+      FROM
+        product_tag
+        JOIN
+      product ON product_tag.product_id = product.id
+        JOIN
+      tag ON tag.id = tag_id
+      WHERE product.id = product_tag.product_id;
+      `)]
+    ],
+    include: [
+      {
+        model: Category,
+        attributes: [
+          'id',
+          'category_id'
+        ]
+      }
+    ]
+  })
+  .then(allProducts => res.json(allProducts))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 // get one product
