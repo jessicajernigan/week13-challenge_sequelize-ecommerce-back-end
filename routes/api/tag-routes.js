@@ -23,7 +23,10 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "tag_name"],
+    attributes: [
+      'id',
+      'tag_name'
+    ],
     // be sure to include its associated Product data
     include: [Product],
   })
@@ -65,10 +68,10 @@ router.put("/:id", (req, res) => {
     }
     res.json(updatedTag);
   })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 router.delete("/:id", (req, res) => {

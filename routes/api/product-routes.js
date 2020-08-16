@@ -12,17 +12,6 @@ router.get('/', (req, res) => {
       'price',
       'stock',
       'category_id'
-      // [sequelize.literal(`
-      // SELECT 
-      //   tag_name
-      // FROM
-      //   product_tag
-      //   JOIN
-      // product ON product_tag.product_id = product.id
-      //   JOIN
-      // tag ON tag.id = tag_id
-      // WHERE product.id = product_tag.product_id;
-      // `)]
     ],
     include: [Category, Tag]
   })
@@ -41,12 +30,14 @@ router.get('/:id', (req, res) => {
       id: req.params.id,
     },
     attributes: [
+      'id',
       'product_name',
       'price', 
-      'stock'
+      'stock',
+      'category_id'
     ],
     // be sure to include its associated Category and Tag data
-    include: [Category, Tag],
+    include: [Category, Tag]
   })
     .then((oneProduct) => {
       if (!oneProduct) {
@@ -92,7 +83,8 @@ router.post('/', (req, res) => {
 });
 
 // update product
-router.put('/:id', (req, res) => {
+// update product
+router.put("/:id", (req, res) => {
   // update product data
   Product.update(req.body, {
     where: {
@@ -126,7 +118,7 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((updatedProduct) => res.json(updatedProduct))
+    .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
@@ -140,12 +132,12 @@ router.delete('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbProductData) => {
-      if (!dbProductData) {
+    .then((deleteProduct) => {
+      if (!deleteProduct) {
         res.status(404).json({ message: "No product found with that id." });
         return;
       }
-      res.json(dbProductData);
+      res.json(deleteProduct);
     })
     .catch((err) => {
       console.log(err);
