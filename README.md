@@ -1,28 +1,44 @@
-# week13-challenge_sequelize-ecommerce-back-end
+# eCommerce Back End (powered by Sequelize)
+  
+![license](https://img.shields.io/badge/license-Unlicense-green)
 
+  ## Table of Contents
+  * [Description](#description)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contribution Guidelines](#contribution-guidelines)
+  * [Questions](#questions)
+  
 
-# Acceptance Criteria:
-GIVEN a functional Express.js API:
+  ## Description  
+  View, manage, and manipulate your eCommerce inventory database with the help of Express.js and Sequelize. 
 
-- WHEN I add my database name, MySQL username, and MySQL password to an environment variable file
-- THEN I am able to connect to a database using Sequelize
+  ## Installation  
+  After cloning the application, download the following dependencies in the CLI: 
+  <br>
+  ```npm install express sequelize mysql2``` 
+  <br>
+  ```npm install --save sequelize```
+  <br>
+  ```npm install bcrypt```
+  <br>
+  ```npm install dotenv```
+  <br>
 
-<br>
+  ## Usage
+  - Initialize the application with ```npm start```. 
+  - Seed the database with test data using the custom script ```npm run seed```. 
+  - Watch a [comprehensive tutorial video here](https://drive.google.com/file/d/1DBFIatJ9ehGcNjRv0FBpVtGRUvkOPYgR/view).  
 
-- WHEN I enter schema and seed commands
-- THEN a development database is created and is seeded with test data
+  ![screenshot](./assets/insomnia.png)
 
-<br>
+  ## License
+  This project is covered under Unlicense.
 
-- WHEN I enter the command to invoke the application
-- THEN my server is started and the Sequelize models are synced to the MySQL database
+  ## Contribution Guidelines
+  It's chaos; be kind. 
 
-<br>
+  ## Questions
+  Please direct all inquiries to [jessicajernigan](https://github.com/jessicajernigan) via email at: [jernigan.jessica.leigh@gmail.com](mailto:jernigan.jessica.leigh@gmail.com?subject=Question%20About%20eCommerce%20Back%20End%20(powered%20by%20Sequelize))
 
-- WHEN I open API GET routes in Insomnia for categories, products, or tags
-- THEN the data for each of these routes is displayed in a formatted JSON
-
-<br>
-
-- WHEN I test API POST, PUT, and DELETE routes in Insomnia
-- THEN I am able to successfully create, update, and delete data in my database
